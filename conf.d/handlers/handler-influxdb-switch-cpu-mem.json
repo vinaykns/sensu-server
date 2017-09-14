@@ -1,0 +1,8 @@
+{
+  "handlers": {
+       "influxdb-switch-cpu-mem": {
+           "type"        : "pipe",
+           "command"     : "/etc/sensu/handlers/influxdb-switch-cpu-mem.rb"
+     }
+  }
+}

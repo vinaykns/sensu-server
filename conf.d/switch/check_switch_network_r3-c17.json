@@ -1,0 +1,12 @@
+{
+  "checks":{
+    "switch_network_r3_c17":{
+      "handlers": ["default", "influxdb-switch", "network-email"],
+      "type": "metric",       
+      "command": "/etc/sensu/plugins/check_switch_network_usage.rb -h 10.99.1.5 -C mars -s true -i 6 -t 60000000",
+      "interval": 7,
+      "aggregate": true,
+      "subscribers": [ "moc-switch" ]
+     }
+  }
+}

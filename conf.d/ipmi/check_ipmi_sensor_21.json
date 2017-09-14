@@ -1,0 +1,11 @@
+{
+  "checks":{
+    "ipmi_sensor_metrics_21":{
+      "handlers": ["default", "influxdb-ipmi-sensor"],
+      "type": "metric",       
+      "command": "/etc/sensu/plugins/ipmi-sensor-metrics.rb -u admin -p 73qtx8nVXa4c06 -h 10.99.1.121 --scheme  compute-21.moc.ne.edu",
+      "interval": 10,
+      "subscribers": [ "moc-ipmi" ]
+     }
+  }
+}

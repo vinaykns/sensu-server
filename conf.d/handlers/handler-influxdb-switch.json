@@ -1,0 +1,8 @@
+{
+  "handlers": {
+       "influxdb-switch": {
+           "type"        : "pipe",
+           "command"     : "/etc/sensu/handlers/influxdb-switch.rb"
+     }
+  }
+}

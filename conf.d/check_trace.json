@@ -1,0 +1,11 @@
+{
+  "checks":{
+    "sensor_trace":{
+      "handlers": ["default"],
+      "type": "metric",       
+      "command": "python /etc/sensu/plugins/trace.py",
+      "interval": 30,
+      "subscribers": [ ]
+     }
+  }
+}

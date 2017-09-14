@@ -1,0 +1,12 @@
+{
+  "filters": {
+    "recurrences": {
+      "attributes": {
+        "check": {
+          "status": "eval: value == 2"
+        },
+        "occurrences": "eval: value % 515 == 0"
+      }
+    }
+  }
+}

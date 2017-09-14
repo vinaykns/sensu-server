@@ -1,0 +1,11 @@
+{
+  "checks":{
+    "ipmi_sensor_data":{
+      "type": "metric",       
+      "command": "/etc/sensu/plugins/ipmidata_verify_compute_hosts.py",
+      "interval": 300,
+      "subscribers": [ "moc-ipmi" ]
+     }
+  }
+}
+

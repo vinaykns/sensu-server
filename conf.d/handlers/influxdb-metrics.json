@@ -1,0 +1,9 @@
+{
+  "influxdb": {
+    "host": "10.13.37.179",
+    "port": 8086,
+    "username": "root",
+    "password": "root",
+    "database": "sensu_db"
+  }
+}

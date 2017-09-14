@@ -1,0 +1,1 @@
+["In Speed", 28682.666666666668, "moc-neu-podb-r3c17-1", "mgmt0", "Out Speed", 30540.0, "moc-neu-podb-r3c17-1", "mgmt0"]

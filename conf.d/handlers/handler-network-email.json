@@ -1,0 +1,13 @@
+{
+  "handlers": {
+    "network-email": {
+      "type": "pipe",
+      "filter": "recurrences",
+      "severities": [
+        "critical"
+      ],
+      "mutator": "mutated",
+      "command":"mailx -s 'There is unusual network activity on the switch.' tqiu@bu.edu moc-kaizen-l@bu.edu dmak1112@bu.edu ohta.g@husky.neu.edu" 
+    }
+  }
+}

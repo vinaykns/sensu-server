@@ -1,0 +1,11 @@
+{
+  "checks":{
+    "switch_cpu_mem":{
+      "handlers": ["default", "influxdb-switch-cpu-mem"],
+      "type": "metric",       
+      "command": "/etc/sensu/plugins/check_switch_cpu_memory_metrics.rb -h 10.99.1.6 -C mars",
+      "interval": 30,
+      "subscribers": [ "moc-switch" ]
+     }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "aggregates_check": {
+      "handlers": ["default"],
+      "type": "metric",
+      "filter": "twice_day_recurrences",
+      "command": "/bin/python /etc/sensu/plugins/check_aggregates.py",
+      "interval": 300,
+      "subscribers": [ "aggregates" ]
+    }
+  }
+}

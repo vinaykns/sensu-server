@@ -1,0 +1,10 @@
+{
+  "mailer": {
+    "admin_gui": "http://127.0.0.1:3000/#/events",
+    "mail_from": "sensu@moc-sensu.moc.ne.edu",
+    "mail_to": "lihua88@bu.edu",
+    "smtp_address": "localhost",
+    "smtp_port": "25",
+    "smtp_domain": "localhost.localdomain"
+  }
+}

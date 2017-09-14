@@ -1,0 +1,9 @@
+{
+  "client": {
+    "name": "sensu-ipmi.moc.ne.edu",
+    "address": "192.168.122.147",
+    "subscriptions": [
+      "moc-sensu", "heartbeat", "moc-switch", "moc-ipmi", "aggregates"
+    ]
+  }
+}

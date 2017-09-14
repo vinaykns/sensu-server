@@ -1,0 +1,8 @@
+{
+  "handlers": {
+       "influxdb-ipmi-sensor": {
+           "type"        : "pipe",
+           "command"     : "/etc/sensu/handlers/influxdb-ipmi-sensor.rb"
+     }
+  }
+}

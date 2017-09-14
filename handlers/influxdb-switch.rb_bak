@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'sensu-handler'
+
+class SensuToInfluxDB < Sensu::Handler
+  def filter; end
+
+  def handle
+    influxdb_server = settings['influxdb']['host']
+    influxdb_port   = settings['influxdb']['port']
+    influxdb_user   = settings['influxdb']['username']
+    influxdb_pass   = settings['influxdb']['password']
+    influxdb_db     = settings['influxdb']['database']
+
+    mydata = []
+    check_name = @event['check']['name']
+    if check_name.include? "-"
+        check_name = check_name.gsub!'-','_'
+    end
+    series = check_name
+    @event['check']['output'].each_line do |metric|
+      m = metric.split
+      puts m
+      next unless m.count == 3
+      
+      tags = m[0].split(".")
+      host = tags[0].to_s
+      interface = tags[1].to_s
+      tag = tags[2].to_s
+      next unless host
+      value = m[1].to_f
+      mydata = { host: @event['client']['name'], value: value,
+                 ip: @event['client']['address']
+               }
+      
+      timestamp = m[2].to_f*1000
+      #puts "http://#{influxdb_server}:#{influxdb_port}/write?db=#{influxdb_db}' --data-binary '#{series},host=#{host},metric=#{tag}  value=#{value} #{timestamp}"
+      `curl -X POST -d '[{"name":"#{series}","columns":["time","host","interface","metric","value"],"points":[[#{timestamp},"#{host}","#{interface}","#{tag}",#{value}]]}]' 'http://#{influxdb_server}:#{influxdb_port}/db/#{influxdb_db}/series?u=#{influxdb_user}&p=#{influxdb_pass}&time_precision=ms'`
+      #`curl -i -XPOST 'http://#{influxdb_server}:#{influxdb_port}/write?db=#{influxdb_db}' --data-binary '#{series},host=#{host},metric=#{tag}  value=#{value} #{timestamp}'`
+    end
+  end
+  
+  #extract host name from the line
+  def extractHost(s)
+       t = s
+       metricInfo = {}
+       host = t.match(/[\w-]/)
+       if(host.to_s)
+          metricInfo["host"] = host.to_s
+          tags = t.sub(/[\w-]./,"")
+          #
+          metricInfo["tags"] = tags.split(".")
+          return metricInfo
+       end
+  end
+      
+end

@@ -1,0 +1,11 @@
+{
+  "handlers": {
+    "mailer": {
+      "severities": [
+        "critical"
+      ],
+      "type": "pipe",
+      "command": "/etc/sensu/handlers/mailer.rb -j mailer"
+    }
+  }
+}
